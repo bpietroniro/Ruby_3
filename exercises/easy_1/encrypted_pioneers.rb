@@ -10,7 +10,7 @@
     - add a space to the output string
     - next
   - get ASCII num for current char
-  - adjustment = 65 for uppercase, 97 for lowercase
+  - adjustment is 65 for uppercase, 97 for lowercase
   - new_char_ord = ((current char ASCII - adjustment) + ROTATION) % 26 + adjustment
   - add char(new_char_ord) to output string
 - return output string
