@@ -1,11 +1,14 @@
-factorial = Enumerator.new do |p|
-  a = b = 1
-  p << a
+factorial = Enumerator.new do |yielder|
+  n = current_factorial = 1
+  yielder << 1 # for 0! 
   loop do
-    p << a*b
-    b = a*b
-    a += 1
+    yielder << n * current_factorial
+    current_factorial = n * current_factorial
+    n += 1
   end
 end
 
-p factorial.take(7)
+7.times { puts factorial.next }
+3.times { puts factorial.next }
+factorial.rewind
+7.times { puts factorial.next }
