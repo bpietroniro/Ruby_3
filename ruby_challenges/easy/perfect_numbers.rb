@@ -1,38 +1,28 @@
-# Write a program that can tell whether a number is perfect, abundant, or deficient.
-
-=begin
-
-
-=end
+# Write a program that can tell whether a number is perfect,
+# abundant, or deficient.
 
 class PerfectNumber
   def self.classify(num)
-    raise StandardError.new if num < 1
+    raise StandardError if num < 1
 
     divisor_sum = PerfectNumber.divisor_sum(num)
-    if divisor_sum < num
-      return "deficient"
-    elsif divisor_sum > num
-      return "abundant"
-    else
-      return "perfect"
-    end
+    return "deficient" if divisor_sum < num
+    return "abundant" if divisor_sum > num
+    "perfect"
   end
 
-  private
+  class << self
+    def divisor_sum(num)
+      divisors = [1]
 
-  def self.divisor_sum(num)
-    divisors = [1]
-
-    (2..Integer.sqrt(num)).each do |n|
-      if num % n == 0
-        divisors << n
-        divisors << num / n
+      (2..Integer.sqrt(num)).each do |n|
+        if num % n == 0
+          divisors << n
+          divisors << num / n
+        end
       end
-    end
 
-    divisors.uniq.sum
+      divisors.uniq.sum
+    end
   end
 end
-
-

@@ -1,3 +1,4 @@
+# rubocop:disable Layout/LineLength
 # Write some code that converts modern decimal numbers into their Roman number equivalents.
 
 =begin
@@ -37,6 +38,7 @@ ALGORITHM
 
 =end
 
+# rubocop:enable Layout/LineLength
 class RomanNumeral
   attr_reader :decimal
 
@@ -48,7 +50,7 @@ class RomanNumeral
 
   def to_roman
     roman_numerals = []
-    digits = decimal.to_s.chars.reverse 
+    digits = decimal.to_s.chars.reverse
     digits.each_with_index do |digit, index|
       next if digit == 0
       roman_numerals.prepend(determine_digit_roman(digit, index))
@@ -58,21 +60,22 @@ class RomanNumeral
   end
 
   def determine_digit_roman(d, i)
-    result = ''
+    one_sym = SYMBOLS[i][0]
+    five_sym = SYMBOLS[i][1]
+    next_one_sym = i < 3 ? SYMBOLS[i + 1][0] : nil
+    pointless_method_thanks_rubocop(d, i, one_sym, five_sym, next_one_sym)
+  end
+
+  def pointless_method_thanks_rubocop(d, i, o, f, n)
     if i == 3
-      result += SYMBOLS[i][0] * d.to_i
+      o * d.to_i
     elsif d == "9"
-      result += SYMBOLS[i][0]
-      result += SYMBOLS[i + 1][0]
+      o + n
     elsif d == "4"
-      result += SYMBOLS[i][0]
-      result += SYMBOLS[i][1]
+      o + f
     else
       fives, ones = d.to_i.divmod(5)
-      result += SYMBOLS[i][1] * fives
-      result += SYMBOLS[i][0] * ones
+      f * fives + o * ones
     end
-
-    result
   end
 end

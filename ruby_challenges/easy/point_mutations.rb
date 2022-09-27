@@ -1,3 +1,4 @@
+# rubocop:disable Layout/LineLength
 # Write a program that can calculate the Hamming distance between two DNA strands.
 
 =begin
@@ -10,7 +11,7 @@ PROBLEM
 EXAMPLES
 - need a DNA class that initializes with a string representing a DNA strand
 - two empty strands have a Hamming distance of 0
-- `hamming_distance` should be an instance method that returns an integer 
+- `hamming_distance` should be an instance method that returns an integer
 - strands should be left unchanged
 
 DATA STRUCTURES
@@ -26,6 +27,8 @@ to calculate Hamming distance:
   - whenever they are different, increment count by 1
 - return count
 =end
+
+# rubocop:enable Layout/LineLength
 
 class DNA
   attr_reader :strand

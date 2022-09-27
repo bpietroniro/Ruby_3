@@ -1,3 +1,4 @@
+# rubocop:disable Layout/LineLength
 # Write a program that, given a natural number and a set of one or more other numbers, can find the sum of all the multiples of the numbers in the set that are less than the first number. If the set of numbers is not given, use a default set of 3 and 5.
 
 =begin
@@ -28,11 +29,12 @@ ALGORITHM
 - return the sum of the multiples in the set
 =end
 
+# rubocop:enable Layout/LineLength
 class SumOfMultiples
   attr_reader :factors
 
   def initialize(*factors)
-    @factors = (factors.size > 0) ? factors : [3, 5]
+    @factors = factors.empty? ? [3, 5] : factors
   end
 
   def to(max_multiple)

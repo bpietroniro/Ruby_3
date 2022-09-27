@@ -1,3 +1,4 @@
+# rubocop:disable Layout/LineLength
 # Write a program that, given a word, computes the Scrabble score for that word.
 
 =begin
@@ -39,11 +40,9 @@ ALGORITHM
   - qz
 =end
 
+# rubocop:enable Layout/LineLength
 class Scrabble
   attr_reader :word
-
-  # this was my initial idea before I remembered that regex exists
-  # POINTS = (%i(a e i o u l n r s t d g b c m p f h v w y k j x q z).zip(%w(1 1 1 1 1 1 1 1 1 1 2 2 3 3 3 3 4 4 4 4 4 5 8 8 10 10).map(&:to_i))).to_h
 
   def initialize(word)
     @word = word
@@ -55,14 +54,13 @@ class Scrabble
 
   def score
     return 0 unless word
-    word.gsub(/[^a-z]/i, '').chars.map { |char| get_point_value(char) }.sum 
+    word.gsub(/[^a-z]/i, '').chars.map { |char| get_point_value(char) }.sum
   end
-  
+
   private
 
   def get_point_value(char)
     case char
-    when /\s/ then 0
     when /[aeioulnrst]/i then 1
     when /[dg]/i then 2
     when /[bcmp]/i then 3
@@ -70,7 +68,6 @@ class Scrabble
     when /[k]/i then 5
     when /[jx]/i then 8
     when /[qz]/i then 10
-    else raise ArgumentError, "was that a letter from another dimension?!!"
     end
   end
 end

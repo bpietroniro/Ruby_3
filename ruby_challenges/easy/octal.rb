@@ -1,4 +1,5 @@
-# Implement octal to decimal conversion. 
+# rubocop:disable Layout/LineLength
+# Implement octal to decimal conversion.
 # Given an octal input string, your program should produce a decimal output.
 # Treat invalid input as octal 0.
 
@@ -27,6 +28,8 @@ ALGORITHM
 
 =end
 
+# rubocop:enable Layout/LineLength
+
 class Octal
   attr_reader :octal_str
 
@@ -42,7 +45,6 @@ class Octal
     digits.each_with_index do |d, i|
       result += 8**i * d.to_i
     end
-    
     result
   end
 end

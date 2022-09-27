@@ -1,3 +1,4 @@
+# rubocop:disable Layout/LineLength
 # Write a program that takes a word and a list of possible anagrams and selects the correct sublist that contains the anagrams of the word.
 
 =begin
@@ -30,6 +31,8 @@ ALGORITHM
 
 =end
 
+# rubocop:enable Layout/LineLength
+#
 class Anagram
   attr_reader :word
 

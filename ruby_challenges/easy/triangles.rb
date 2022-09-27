@@ -1,4 +1,5 @@
-# Write a program to determine whether a triangle is equilateral, isosceles, or scalene.
+# Write a program to determine whether a triangle is
+# equilateral, isosceles, or scalene.
 
 =begin
 - kinds: equilateral, isosceles, scalene
@@ -20,21 +21,18 @@ class Triangle
   end
 
   def check_valid_input
-    if sides[0] <= 0
-      raise ArgumentError, "invalid side length; must be greater than 0"
-    elsif sides[2] >= sides[0] + sides[1]
-      raise ArgumentError, "invalid triangle side lengths"
-    end
+    valid = sides[0] > 0 && sides[2] < sides[0] + sides[1]
+    raise ArgumentError, "invalid triangle side lengths" unless valid
   end
 
   def determine_kind
-    return case sides.uniq.count
-      when 1
-        "equilateral"
-      when 2
-        "isosceles"
-      else
-        "scalene"
-      end
+    case sides.uniq.count
+    when 1
+      "equilateral"
+    when 2
+      "isosceles"
+    else
+      "scalene"
+    end
   end
 end
