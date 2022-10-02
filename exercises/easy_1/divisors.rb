@@ -14,13 +14,11 @@ def divisors(n)
   return [1] if n == 1
 
   divs_array = []
-  candidate = 1
-  while candidate <= Math.sqrt(n)
+  1.upto(Math.sqrt(n)) do |candidate|
     if n % candidate == 0
       divs_array << candidate
-      divs_array << n / candidate
+      divs_array << n / candidate unless candidate == Math.sqrt(n)
     end
-    candidate += 1
   end
 
   divs_array.sort
